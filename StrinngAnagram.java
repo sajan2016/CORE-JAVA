@@ -7,8 +7,10 @@ class StringAnagram{
 	char[] temp2=str2.toCharArray();
 	for(char a:temp1)
 	for(char b:temp2){
-         if(a == b)
+         if(a == b){
          check++;  
+	 break;
+	 }
 	 }	
 	 if(check == temp1.length)
 	 	return true;
@@ -21,6 +23,6 @@ class StringAnagram{
 		if(new StringAnagram().isAnagram(str1,str2))
 		System.out.println(str1 + " and " + str2 + " is Anagram pair");
 		else
-		System.out.println(str1 + " and " + str2 + " is Anagram pair");	
+		System.out.println(str1 + " and " + str2 + " is not an Anagram pair");	
 	}
 }
