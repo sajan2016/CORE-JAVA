@@ -1,30 +1,28 @@
+import java.io.*;
+import java.util.*;
 class Permutation{
+ static int count=0;
+public static void permutations(String str) { 
+    permutation("", str); 
+}
 
-	public void print(char[] str){
-		for(char a:str)
-		System.out.print(a);
-			System.out.println();
-	}
-	void printPermutation(String str){
-	    char[] str1=str.toCharArray();
-	    char temp;
-	    for(int i=0;i<str1.length;i++){
-	    	  print(str1);
-	       for(int j=1;j<str1.length-1;j++){
-              temp=str1[j];
-              str1[j]=str1[j+1];
-              str1[j+1]=temp;
-                print(str1);
-	       }
-	          temp=str1[0];
-              str1[0]=str1[1];
-              str1[1]=temp;
-	    }
-	}
-
+private static void permutation(String prefix, String str) {
+    int n = str.length();
+    if (n == 0) 
+	{   count++;
+		System.out.println(prefix);
+    }
+	else {
+        for (int i = 0; i < n; i++)
+            permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i+1, n));
+    }
+}
 	public static void main(String[] felight){
-		String str="ABCD";
-		System.out.println("All Permutation of \""+str+"\":");
-		new Permutation().printPermutation(str);
+		System.out.println("Enter String:");
+		String str=new Scanner(System.in).nextLine();
+		System.out.println(" All Permutation of \""+str+"\":");
+		 permutations(str);
+		 System.out.println("Total Permutation  of \""+str+"\" :: "+count);
 	}
 }
+  
